@@ -26,7 +26,7 @@ export function validate(schema: z.ZodType) {
     if (!result.success) {
       res.status(400).json({
         message: "Validation error",
-        errors: result.error.errors.map((e: any) => ({
+        errors: result.error.issues.map((e: any) => ({
           field: e.path.join("."),
           message: e.message,
         })),

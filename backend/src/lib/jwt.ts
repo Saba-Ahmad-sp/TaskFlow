@@ -9,7 +9,7 @@ export interface AccessTokenPayload {
 
 export function signAccessToken(payload: AccessTokenPayload): string {
   return jwt.sign(payload, env.ACCESS_TOKEN_SECRET, {
-    expiresIn: env.ACCESS_TOKEN_EXPIRES_IN,
+    expiresIn: env.ACCESS_TOKEN_EXPIRES_IN as string & jwt.SignOptions["expiresIn"],
   });
 }
 

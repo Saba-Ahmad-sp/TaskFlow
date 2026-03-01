@@ -11,7 +11,7 @@ export async function getTasks(req: Request, res: Response) {
 }
 
 export async function getTask(req: Request, res: Response) {
-  const task = await taskService.getTaskById(req.user!.userId, req.params.id);
+  const task = await taskService.getTaskById(req.user!.userId, req.params.id as string);
   res.status(200).json({ task });
 }
 
@@ -23,18 +23,18 @@ export async function createTask(req: Request, res: Response) {
 export async function updateTask(req: Request, res: Response) {
   const task = await taskService.updateTask(
     req.user!.userId,
-    req.params.id,
+    req.params.id as string,
     req.body
   );
   res.status(200).json({ task });
 }
 
 export async function deleteTask(req: Request, res: Response) {
-  await taskService.deleteTask(req.user!.userId, req.params.id);
+  await taskService.deleteTask(req.user!.userId, req.params.id as string);
   res.status(200).json({ message: "Task deleted successfully" });
 }
 
 export async function toggleTask(req: Request, res: Response) {
-  const task = await taskService.toggleTask(req.user!.userId, req.params.id);
+  const task = await taskService.toggleTask(req.user!.userId, req.params.id as string);
   res.status(200).json({ task });
 }

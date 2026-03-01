@@ -37,7 +37,7 @@ export const getTasksSchema = z.object({
         .default("createdAt"),
       sortOrder: z.enum(["asc", "desc"]).default("desc"),
     })
-    .default({}),
+    .default(() => ({ page: 1, limit: 10, sortBy: "createdAt" as const, sortOrder: "desc" as const })),
 });
 
 export const taskParamsSchema = z.object({
