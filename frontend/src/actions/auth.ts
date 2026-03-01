@@ -3,7 +3,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-const API_URL = process.env.API_URL || "http://localhost:3002";
+const API_URL = process.env.API_URL || "http://localhost:3001";
 
 interface AuthResult {
   success: boolean;
